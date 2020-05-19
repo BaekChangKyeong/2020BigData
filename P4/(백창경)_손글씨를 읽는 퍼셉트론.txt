@@ -1,0 +1,1 @@
+Hidden Layer: 3Hidden Neurons: 10000
