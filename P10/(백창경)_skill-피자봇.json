@@ -1,0 +1,161 @@
+{
+  "intents": [
+    {
+      "intent": "주문",
+      "examples": [
+        {
+          "text": "배달해줘"
+        },
+        {
+          "text": "보내줘"
+        },
+        {
+          "text": "시킬래"
+        },
+        {
+          "text": "주문할래"
+        },
+        {
+          "text": "주문해줘"
+        },
+        {
+          "text": "테이크아웃"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "피자종류",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "불고기피자",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "포테이토피자",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "페퍼로니피자",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "콤비네이션피자",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "고구마피자",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "고르곤졸라피자",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "기타",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "알아듣기 쉽게 다시 말씀해주시면 좋겠어요."
+              },
+              {
+                "text": "다시 말씀해주시겠어요? 이해가 잘 안 되네요."
+              },
+              {
+                "text": "무슨 뜻인지 모르겠어요."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "기타",
+      "previous_sibling": "node_3_1591169201355",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "주문하기",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "@피자종류를 주문하였습니다."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#주문",
+      "dialog_node": "node_3_1591169201355",
+      "previous_sibling": "환영 인사"
+    },
+    {
+      "type": "standard",
+      "title": "환영 인사",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "무엇을 도와드릴까요?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "환영 인사"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "당신이 의도한 것은",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "해당 항목 없음"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "당신이 의도한 것은"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "피자봇",
+  "language": "ko",
+  "description": "피자를 주문받는 챗봇"
+}
